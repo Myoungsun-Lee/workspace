@@ -1,12 +1,14 @@
 ================================================================================================================================================
 <리모트 추가>
-git remote add wall ssh://mysunny.lee@wall.lge.com:29448/webos-pro/meta-lg-webos
+git remote add wall ssh://....
 git remote add [remote name] [address]
 새로 생성된 리모트의 특정 브랜치로 이동후 리셋 
-git reset --hard wall/@drd4tv
+git reset --hard origin/master
+                 (remote)/(branch)
 
 새로 브랜치를 만든 후 리모트의 특정브랜치로 이동
-git checkout -b anyname wall/@ded4tv
+git checkout -b anyname ex_remote/master 
+                       (remote)/(branch)
 
 새로운 리모트로 이동했을때 업데이트 
 git remote update
@@ -144,15 +146,6 @@ git push origin +master
 
 git commit  취소
 git push origin --force 0722ea32f190dd442f55e0c0421f6a3bc6816550:master
-git push origin --force [commit id]:[branch]
+git push origin --force (commit id):(branch)
 
-619  git push origin --force d8e7808:master
-620  git gr
-621  git co git-annex
-622  git reset --hard origin/git-annex
-623  git gr
-624  git co master
-625  git reset --hard origin/master
-626  ls
-627  git gr
-628  cat HACKING
+git push origin --force d8e7808:master
