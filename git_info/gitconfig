@@ -1,0 +1,44 @@
+[core]
+        editor = vim
+
+[color]
+   diff = auto
+   status = auto
+   branch = auto
+   interactive = auto
+   ui = true
+   pager = true
+
+[user]
+email = ohmygod0327@gmail.com
+name = Myoungsun Lee
+
+[push]
+default = matching
+
+[color "branch"]
+   current = yellow reverse
+   local = yellow
+   remote = green
+
+[color "diff"]
+   meta = yellow bold
+   frag = magenta bold
+   old = red bold
+   new = green bold
+
+[color "status"]
+   added = yellow
+   changed = green
+   untracked = cyan
+
+[alias]
+   co = checkout
+   lg = log --decorate=short
+   br = branch
+   st = status
+   cm = commit
+   go = log --graph  --oneline --decorate=short
+   gr = log --graph  --oneline --decorate=short --all
+   gd = log --graph --decorate=short --all --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%C(bold yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short
+   gt = log --graph --decorate=short --pretty=format:'%C(yellow)%h%Creset %C(green)%cd%C(bold yellow)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short
