@@ -1,0 +1,158 @@
+================================================================================================================================================
+<리모트 추가>
+git remote add wall ssh://mysunny.lee@wall.lge.com:29448/webos-pro/meta-lg-webos
+git remote add [remote name] [address]
+새로 생성된 리모트의 특정 브랜치로 이동후 리셋 
+git reset --hard wall/@drd4tv
+
+새로 브랜치를 만든 후 리모트의 특정브랜치로 이동
+git checkout -b anyname wall/@ded4tv
+
+새로운 리모트로 이동했을때 업데이트 
+git remote update
+git remote update —prune
+================================================================================================================================================
+
+
+
+================================================================================================================================================
+<branch 생성>
+git push origin HEAD:testtest
+git push (remote) (branch)
+git push origin serverfix:serverfix라고 Push하는 것은 
+로컬의 serverfix 브랜치를 리모트 저장소의 serverfix 브랜치로 Push하라라는 뜻이다. 
+로컬 브랜치의 이름과 리모트 서버의 브랜치 이름이 다를 때 필요하다. 
+리모트 저장소에 serverfix라는 이름 대신 다른 이름을 사용하려면 git push origin serverfix:awesomebranch처럼 사용한다.
+  
+git checkout --track -b refactored origin/refactored
+=> In this example “refactored” is the name of the new branch and “origin/refactored” is the name of existing remote-tracking branch to base it on. (In recent versions of git the “?track” option is actually unnecessary since it’s implied when the final parameter is a remote-tracking branch, as in this example.)
+
+
+
+<branch 삭제>
+git push origin :testtest
+git push [remotename] :[branch]
+================================================================================================================================================
+
+
+
+================================================================================================================================================
+<github>
+
+https://charsyam.wordpress.com/2013/10/14/%EC%9E%85-%EA%B0%9C%EB%B0%9C-git-%EC%9D%B4%EA%B2%83%EB%A7%8C-%EB%B0%B0%EC%9B%8C%EB%8F%84-github%EC%97%90-pull-request-%EB%82%A0%EB%A6%B4-%EC%88%98-%EC%9E%88%EB%8B%A41/
+
+https://dogfeet.github.io/articles/2012/how-to-github.html
+
+새로 fork해서 로컬로 수정 후 리뷰하려고 할 때
+
+1. repository 포크
+2. git clone 으로 해당 프로젝트를 받아옴
+3. git remote add 이름 원래git주소
+git remote add guoid https://github.com/charsyam/python-guoid.git
+git remote add upstream git://github.com/upstreamname/projectname.git
+4. 원래꺼 땡겨와서 머지할때 
+fetch 하고 merge하면 됨
+upstream이라는이름으로 remote했다면 
+git fetch upstream ; git merge upstream/master
+5. 브랜치 나눠도 되고 안나눠도 됨
+6. 수정하고 커밋
+7. push
+git push origin HEAD:master
+git push [remote] HEAD:[branch]
+그냥 브랜치로 하면 맨 위에있는게  push 됨
+8. 사이트에서 풀리퀘스트 하면 됨
+================================================================================================================================================
+
+
+
+<git 참고>
+http://collab.lge.com/main/pages/viewpage.action?pageId=135861575
+
+
+git reset --hard origin/master
+
+
+
+================================================================================================================================================
+git show-ref sub
+
+git branch
+git fetch origin master ;git rebase FETCH_HEAD
+
+git log --oneline
+
+git clone <repo-address>
+git tag -l
+git checkout <tag-name>
+git format-patch HEAD^..HEAD
+================================================================================================================================================
+
+
+
+================================================================================================================================================
+<순서 바꾸기>
+git rebase -i HEAD~3
+git checkout HEAD^ libs/gst/base/gstbasesink.c
+================================================================================================================================================
+
+
+
+================================================================================================================================================
+미러링설정
+http://blog.plataformatec.com.br/2013/05/how-to-properly-mirror-a-git-repository/
+
+1. 다운받아 놓은것이 없는 상태에서 붙이기
+$ git clone --mirror git@example.com/upstream-repository.git
+$ cd upstream-repository.git
+$ git push --mirror git@example.com/new-location.git
+=> Don’t use git push --mirror in repositories
+=> git clone --mirror is prefered
+
+2. 이미 생성한(다운받은) git에다 붙이기
+ git fetch --prune  //clean all in local git
+git push --prune git@example.com:/new-location.git +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+================================================================================================================================================
+
+
+
+================================================================================================================================================
+git reset HEAD^
+이 명령을 사용하면 커밋 하나를 되돌릴 수 있다. 두개를 되돌리려면
+git reset HEAD~2
+
+이렇게 되돌린 다음엔 다시 커밋을 하고..
+git commit -m ‘머라머라’
+
+이제 Push를 해야되는데.. Github같은 곳에 있는 저장소로 올리려고 push하면 다음과 같은 메시지가 떨어진다.
+
+$ git push origin master
+To git@github.com:keesun/telepathy.git
+! [rejected] master -> master (non-fast-forward)
+error: failed to push some refs to ‘git@github.com:keesun/telepathy.git’
+To prevent you from losing history, non-fast-forward updates were rejected
+Merge the remote changes (e.g. ‘git pull’) before pushing again. See the
+‘Note about fast-forwards’ section of ‘git push –help’ for details.
+
+원격 저장소에 있는 정보가 손실 될 수 있는 작업이라서 리젝트 시킨다.
+이럴때 사용할 수 있는게 +다.
+
+git push origin +master
+
+이렇게 +를 붙여주면 경고는 무시하고 데이터가 손실되도 push한다.
+================================================================================================================================================
+
+
+git commit  취소
+git push origin --force 0722ea32f190dd442f55e0c0421f6a3bc6816550:master
+git push origin --force [commit id]:[branch]
+
+619  git push origin --force d8e7808:master
+620  git gr
+621  git co git-annex
+622  git reset --hard origin/git-annex
+623  git gr
+624  git co master
+625  git reset --hard origin/master
+626  ls
+627  git gr
+628  cat HACKING
