@@ -17,7 +17,7 @@ do
 	cd $SRC_DIR/$file
     
     if [ -d $SRC_DIR/$file/.git ]; then
-        list=`git branch -a | grep .*remotes.*\.$BRANCH | sed "s/.*remotes\/\(.*\)/\1/g"` 
+        list=`git branch -a | grep .*remotes.*\.$BRANCH | sed "s/.*\/\(.*\)/\1/g"`
         if [ -z "$list" ]; then 
             echo -e "There is no branch about $BRANCH \n";
             continue;
@@ -56,6 +56,5 @@ do
         echo -e "This is not git directory. Go to next..\n"   
 		continue;
 	fi
-
 done
-
+    echo -e "All Done! Bye..(-_-)b\n"
