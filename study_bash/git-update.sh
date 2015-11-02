@@ -19,7 +19,7 @@ do
 	cd $SRC_DIR/$file
 
 	if [ -d $SRC_DIR/$file/.git ]; then
-		git branch; git pull
+		git remote update \-\-prune; git branch; git pull
 		echo -e "$file update completed\n"
 	else
 		echo -e "Not git directory. Pass~\n"
