@@ -5,21 +5,33 @@ LOG_DIR=$SRC_DIR/log
 BRANCH=$1
 CHECK=false
 
+if [ $# -eq 2 ]; then
+    CONTINUE=$2
+else
+    let CONTINUE=0;
+fi
+
 if [ -z $BRANCH ]; then
     echo -e "Unkown branch ==> NULL";
     exit 0;
 fi
 
+echo -e "Welcome!!!"
 
 for file in */ ;
 do
-	echo -e "We are in $file";
+    if [ "$CONTINUE" -eq 1 ]; then 
+        echo -e "Please enter any key to continue...";
+	    read next;
+    fi
+
+    echo -e "!!!!! We are in $file";
 	cd $SRC_DIR/$file
     
     if [ -d $SRC_DIR/$file/.git ]; then
         list=`git branch -a | grep .*remotes.*\.$BRANCH | sed "s/.*\/\(.*\)/\1/g"`
         if [ -z "$list" ]; then 
-            echo -e "There is no branch about $BRANCH \n";
+            echo -e "There is no branch about $BRANCH";
             continue;
         fi
         let i=0
@@ -30,31 +42,32 @@ do
             let i++
             echo -e "$num"
         done
-        echo "================="
+        echo -e "================="
         
         for branch in $list ;
         do
           let j++
-          echo -e "Do you want to checkout $branch?[y/n]" ; read anw
-          if [ $anw = 'y' ] || [ $j -eq $i ] ; then break;
-          elif [ $anw = 'n' ]; then continue;
-          else echo "Wrong anwser!! Go to next branch!!"; continue;
+          echo "Do you want to checkout $branch?[y/n] " ; read anw
+          if [ "$anw" = 'y' ] || [ "$j" -eq "$i" ] ; then break;
+          elif [ "$anw" = 'n' ]; then continue;
+          else echo "Wrong anwser!! Go to next branch!!";
+          continue;
           fi
         done
 
-        if [ $anw != 'y' ] && [ $j -eq $i ]; then 
-            echo -e "Go to next directory\n"
+        if [ "$anw" != 'y' ] && [ "$j" -eq "$i" ]; then 
+            echo -e "Go to next directory"
             continue;
         fi
         
         echo -e "...Changing branch to $branch";
 
 		git checkout $branch
-		echo -e "$file completed to change branch\n"
-        echo -e "go to next directory\n"
+		echo -e "$file completed to change branch"
+        echo -e "go to next directory"
 	else
-        echo -e "This is not git directory. Go to next..\n"   
-		continue;
+        echo -e "This is not git directory. Go to next.."   
+        continue;
 	fi
 done
-    echo -e "All Done! Bye..(-_-)b\n"
+    echo -e "\nAll Done! Bye..(-_-)b"
