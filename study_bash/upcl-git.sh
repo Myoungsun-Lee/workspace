@@ -39,7 +39,8 @@ git_func()
             echo -e "$file completed.";
         else
             echo -e "Not git directory. Pass~"
-        	continue;
+            cd $SRC_DIR;
+            continue;
         fi
         
         if [ "$CONTINUE" -eq 1 ]; then
