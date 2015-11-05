@@ -1,14 +1,14 @@
 In git repository.
 
 ====================================================
-  git-reset-branch.sh [branch_name] [continue_tag] 
+  co-git-branch.sh [branch_name] [continue_tag] 
 ====================================================
   - Run in root directory.(The upper directory than your git directory)
   - Search the "branch_name" recursively in remote.
   - Don't need to input full name.
   - If you enter the 'y', then it just checkout that branch.
-  - "continue_tag" make the shell progress continuouly. It's available only "1", and defalut "0".
-  - If you turn on "continue mode", then you have to enter any key every directory. 
+   - "continue_tag" means whether the shell progress is continuouly or not. It's available only "1", and defalut "0".
+  - If you turn on "continue mode", you have to enter any key to go to the next step in each directory. 
   - "Continue mode" is useful when you want to go to next step after you check every directory is completed. 
   - e.g.1.
     |  git-reset-branch.sh RELEASE
@@ -69,8 +69,14 @@ In git repository.
     |  Please enter any key to continue...
 
 =================
-  git-update.sh
+  upcl-git.sh [continue_tag]
 =================
   - Run in root directory.
-  - It just updates all branches recursively. 
+  - You can select three choises.
+    1. remote update
+    2. branch update by pull 
+    3. branch clean
+  - "continue_tag" means whether the shell progress is continuouly or not. It's available only "1", and defalut "0".
+  - If you turn on "continue mode", then you have to enter any key to go to the next step in each directory. 
+  - "Continue mode" is useful when you want to go to next step after you check every directory is completed. 
 

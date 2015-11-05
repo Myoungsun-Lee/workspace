@@ -16,7 +16,7 @@ if [ -z $BRANCH ]; then
     exit 0;
 fi
 
-echo -e "Welcome!!!"
+echo -e "\033[1;33mWelcome!!!\033[0m"
 
 for file in */ ;
 do
@@ -25,7 +25,7 @@ do
 	    read next;
     fi
 
-    echo -e "!!!!! We are in $file";
+    echo -e "\033[1;31mWe are in $file\033[0m";
 	cd $SRC_DIR/$file
     
     if [ -d $SRC_DIR/$file/.git ]; then
@@ -70,4 +70,4 @@ do
         continue;
 	fi
 done
-    echo -e "\nAll Done! Bye..(-_-)b"
+echo -e "\nAll Done! Bye..(-_-)b"
