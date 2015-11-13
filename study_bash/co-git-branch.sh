@@ -21,7 +21,7 @@ echo -e "\033[1;33mWelcome!!!\033[0m"
 for file in */ ;
 do
     if [ "$CONTINUE" -eq 1 ]; then 
-        echo -e "Please enter any key to continue...";
+        echo -ne "Please enter any key to continue...";
 	    read next;
     fi
 
@@ -47,7 +47,7 @@ do
         for branch in $list ;
         do
           let j++
-          echo "Do you want to checkout $branch?[y/n] " ; read anw
+          echo -n "Do you want to checkout $branch?[y/n] " ; read anw
           if [ "$anw" = 'y' ] || [ "$j" -eq "$i" ] ; then break;
           elif [ "$anw" = 'n' ]; then continue;
           else echo "Wrong anwser!! Go to next branch!!";

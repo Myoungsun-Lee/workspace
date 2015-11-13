@@ -60,7 +60,7 @@ while :; do
     echo -e " 3. branch clean"
     echo -e " 4. Quit"
     echo -e "==================="
-    echo "Select: "
+    echo -n "Select: "
     read menu;
 
     case $menu in 
