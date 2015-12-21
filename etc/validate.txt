@@ -1,0 +1,13 @@
+==================================================
+media info 만들기
+gst-validate-media-check-1.0 file://filename --output-file filename.media_info
+gst-validate-media-check-1.0 [file uri] --output-file [filename.media_info]
+
+gst-validate-launcher --medias-paths gst-integration-testsuites/medias/defaults/ --generate-media-info
+=> 이건 전체를 다 만들어버림;;
+
+
+==================================================
+basic test 
+GST_VALIDATE_SCENARIO=play_15s GST_GL_XINITTHREADS=1 gst-validate-1.0  playbin uri=file:///filename audio-sink='fakesink sync=true' video-sink='fakesink sync=true' --set-media-info filename.media_info
+

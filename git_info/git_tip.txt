@@ -149,3 +149,38 @@ git push origin --force 0722ea32f190dd442f55e0c0421f6a3bc6816550:master
 git push origin --force (commit id):(branch)
 
 git push origin --force d8e7808:master
+
+git gr
+git co git-annex
+git reset --hard origin/git-annex
+git gr
+git co master
+git reset --hard origin/master
+ls
+git gr
+cat HACKING
+
+
+================================================================================================================================================
+tag 삭제
+If you have a tag named '12345' then you would just do this:
+
+git tag -d 12345
+git push origin :refs/tags/12345
+That will remove '12345' from the remote repository.
+================================================================================================================================================
+
+
+
+================================================================================================================================================
+git-annex init
+git-annex addurl ftp://
+
+gst-integration-testsuites 에서 파일 추가할때 위 주소로 받고
+git mv file name  으로 파일명 바꿈
+media_info 추가
+
+
+================================================================================================================================================
+git pull --rebase <repo_url> +refs/tags/<TAG>
+
