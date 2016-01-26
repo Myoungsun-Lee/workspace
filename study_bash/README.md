@@ -1,8 +1,8 @@
 In git repository.
+===================
 
-==================================================
-  co-git-branch.sh [branch_name] [continue_tag] 
-==================================================
+co-git-branch.sh [branch_name] [continue_tag] 
+----------------------------------------------
   - Run in root directory.(The upper directory than your git directory)
   - Search the "branch_name" recursively in remote.
   - Don't need to input full name.
@@ -11,6 +11,7 @@ In git repository.
   - If you turn on "continue mode", you have to enter any key to go to the next step in each directory. 
   - "Continue mode" is useful when you want to go to next step after you check every directory is completed. 
   - e.g.1.
+      ```
       git-reset-branch.sh RELEASE
       Welcome!!!
       !!!!! We are in gst-plugins-base/
@@ -40,9 +41,11 @@ In git repository.
       gst-plugins-base/ completed to change branch
 
       go to next directory
+      ```
 
 
   - e.g.2.
+      ```
       git-reset-branch.sh RELEASE 1
       Welcome!!!
       Please enter any key to continue...
@@ -67,10 +70,11 @@ In git repository.
 
       go to next directory
       Please enter any key to continue...
+      ```
 
-===============================
-  upcl-git.sh [continue_tag]
-===============================
+
+upcl-git.sh [continue_tag]
+--------------------------
   - Run in root directory.
   - You can select three choises.
     1. remote update
@@ -79,4 +83,13 @@ In git repository.
   - "continue_tag" means whether the shell progress is continuouly or not. It's available only "1", and defalut "0".
   - If you turn on "continue mode", then you have to enter any key to go to the next step in each directory. 
   - "Continue mode" is useful when you want to go to next step after you check every directory is completed. 
+
+
+make-media-info.sh [TEST_MODE]
+---------------------------------
+  - It just make ".media_info" file for gst-validate.
+  - "TEST_MODE" means whether the file root is my own test directory or not. It's available only "1", and defalut "0".
+  - Additionally, this shell is useful if you use gst-validate and you want to add more media files.
+    But there are too many files, you want to make "media_info" files about just your adding files, then this shell will be helpfull.
+  - You can modified the directory root, and also it makes $pwd.
 
