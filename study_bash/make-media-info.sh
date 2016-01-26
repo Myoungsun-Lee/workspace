@@ -11,7 +11,7 @@ fi
 if [ $TEST_MODE -eq 1 ]; then    
   VALIDATE_ROOT=/home/mysunny.lee/src/gst-integration-testsuites/medias/defaults/lge
 else
-  VALIDATE_ROOT=/home/mysunny.lee/gst-validate/gst-integration-testsuites/medias/defaults/lge
+  VALIDATE_ROOT=$(pwd)
 fi
 
 FILES=$VALIDATE_ROOT/* 
