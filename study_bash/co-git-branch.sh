@@ -32,6 +32,7 @@ do
         list=`git branch -a | grep .*remotes.*\.$BRANCH | sed "s/.*\/\(.*\)/\1/g"`
         if [ -z "$list" ]; then 
             echo -e "There is no branch about $BRANCH";
+	        cd $SRC_DIR;
             continue;
         fi
         let i=0
