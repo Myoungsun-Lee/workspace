@@ -2,6 +2,7 @@
 
 SRC_DIR=$(pwd)
 LOG_DIR=$SRC_DIR/log
+TO_BRANCH=salmon
 
 <<COMMENT
 cd $LOG_DIR
@@ -36,7 +37,6 @@ git_func()
                 3)git clean -dfx
                     ;;
                 4)
-                echo -e "!!!This is for salmon project.!!!";
                 echo -en "Please enter branch name of new version date(e.g. 20150331): ";
                 read date;
                 list=`git branch -a | grep .*remotes.*\.$date | sed "s/.*\/\(.*\)/\1/g"`
@@ -67,13 +67,13 @@ git_func()
                 done
 
                 if [ "$anw" != 'y' ] && [ "$j" -eq "$i" ]; then
-                    echo -e "Go to next directory"
+                    echo -e "\e[32mGo to next directory\e[0m\n"
                     continue;
                 fi
 
-                echo -e ".....Start push the new version from $branch branch to salmon branch";
+                echo -e ".....Start push the new version from $branch branch to $TO_BRANCH branch";
                 echo -e ".....Wait...";
-                git push origin -f origin/$branch:salmon
+                git push origin -f origin/$branch:$TO_BRANCH
                 ;;
             esac
             echo -e "\e[32m$file completed.\e[0m\n";
@@ -98,7 +98,7 @@ while :; do
     echo -e " 1. remote update"
     echo -e " 2. branch update"
     echo -e " 3. branch clean"
-    echo -e " 4. push new version to salmon branch"
+    echo -e " 4. push new version to branch"
     echo -e " 5. Quit"
     echo -e "==================="
     echo -n "Select: "
@@ -117,7 +117,7 @@ while :; do
        git_func $menu 
     ;;
 
-    4) echo -e "*** Start push salmon to update lasted version ***"
+    4) echo -e "*** Start push \e[36m$TO_BRANCH\e[0m to update lasted version ***"
        git_func $menu
     ;;
 
