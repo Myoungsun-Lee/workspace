@@ -80,9 +80,11 @@ upcl-git.sh [continue_tag]
     1. remote update
     2. branch update by pull 
     3. branch clean
+    4. push new version to branch
   - "continue_tag" means whether the shell progress is continuouly or not. It's available only "1", and defalut "0".
   - If you turn on "continue mode", then you have to enter any key to go to the next step in each directory. 
   - "Continue mode" is useful when you want to go to next step after you check every directory is completed. 
+  - Menu4. push new version to branch : You can use it, when you want to push forcibly branch to some branch(destination)
 
 
 make-media-info.sh [TEST_MODE]
