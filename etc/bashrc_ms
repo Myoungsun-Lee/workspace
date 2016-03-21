@@ -1,0 +1,12 @@
+#alias ls='ls --color=auto'
+
+PS1="\u@\h$ "
+
+alias spro='source ~/.profile'
+alias his='history'
+alias vib='vim ~/.bashrc'
+alias ll='ls -al'
+alias vi='vim'
+
+alias sr='screen -r'
+alias sl='screen -list'
