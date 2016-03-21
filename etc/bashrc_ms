@@ -1,6 +1,6 @@
 #alias ls='ls --color=auto'
 
-PS1="\u@\h$ "
+PS1="\u@\h\w$ "
 
 alias spro='source ~/.profile'
 alias his='history'
